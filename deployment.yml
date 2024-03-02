@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodecicd-deployment
+  labels:
+    app: nodecicd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodecicd
+  template:
+    metadata:
+      labels:
+        app: nodecicd 
+    spec:
+      containers:
+      - name: nodeserver
+        image: hailsayan/nodecicd:latest
+        ports:
+        - containerPort: 3000
